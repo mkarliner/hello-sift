@@ -1,0 +1,16 @@
+import json
+import sys
+
+def compute(req):
+    #Implementation goes here
+    
+    print("Hello Python", req)
+    print("VER: ", sys.version_info)
+   
+    val = req["in"]["data"][0]["value"]
+    ret = "%s from Python" % val
+    print("DECODED", ret)
+  
+    # Return can be a dictionary or an array of dictionaries
+    out = dict(name='who', key='name', value=ret)
+    return out
