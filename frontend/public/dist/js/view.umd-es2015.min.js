@@ -1266,6 +1266,7 @@ var MyView = (function (SiftView) {
   MyView.prototype.presentView = function presentView (value) {
     console.log('hello-sift: presentView: ', value);
 	document.getElementById("name").textContent =  value.data.name;
+	document.getElementById("hook-uri").textContent =  value.data.hook_uri;
   };;
 
   MyView.prototype.willPresentView = function willPresentView (value) {

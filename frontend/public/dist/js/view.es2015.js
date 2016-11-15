@@ -1191,6 +1191,7 @@ class MyView extends SiftView {
   presentView(value) {
     console.log('hello-sift: presentView: ', value);
 	document.getElementById("name").textContent =  value.data.name;
+	document.getElementById("hook-uri").textContent =  value.data.hook_uri;
   };
 
   willPresentView(value) {

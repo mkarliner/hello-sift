@@ -1839,10 +1839,9 @@ class MyController extends SiftController {
           data: {}
         };
       case 'summary':
-        return {
-          html: 'summary.html',
-          data: {name: "no-one"} //this.getX()
-        };
+			return {
+				html: 'summary.html',
+				data: this.getWebhook().then(x => ({ name: 'no-one', hook_uri: x}))};
       default:
         console.error('hello-sift: unknown Sift type: ', state.type);
     }
@@ -1857,6 +1856,13 @@ class MyController extends SiftController {
       this.publish('name', xe);
     });
   }
+  
+  getWebhook() {
+     return this.storage.get({
+       bucket: '_redsift',
+       keys: [ 'webhooks/curl_input' ]
+     }).then(d => d[0].value);    
+   }
 
    getName() {
     return this.storage.getAll({
